@@ -1,0 +1,32 @@
+<div class="buttons">
+    <form action="" method="POST" id="cardgate_checkout">
+        <input type="hidden" name="option" value="idealqr" />
+        <img style="max-width:100px" src="./image/payment/cgp/idealqr.svg" alt="iDEAL QR">
+    </form>
+</div>
+<div class="buttons">
+    <div class="pull-right">
+        <input type="button" value="{{ button_confirm }}" id="cardgate-confirm" onclick="redirectClient()" class="btn btn-primary" />
+    </div>
+</div>
+
+<script type="text/javascript"><!--
+ function redirectClient(response) {
+        $.ajax({
+            type: 'GET',
+            url: 'index.php?route=extension/payment/cardgateidealqr/confirm',
+            beforeSend: function () {
+                $('form#cardgate_checkout').hide();
+                $('form#cardgate_checkout').before('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" />{{ redirect_message }}</div>');
+            },
+            success: function (data){
+                if (data.status == "success"){
+                    location = data.redirect;
+                }
+                if (data.status == "failed"){
+                    alert(data.error);
+                } 
+            }
+        });
+    }
+//--></script>

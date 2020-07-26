@@ -1,0 +1,200 @@
+{{ header }}{{ column_left }}
+<div id="content">
+ <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-total" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+ </div>
+<div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+          </div>
+          <div class="panel-body">
+           <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-total" class="form-horizontal">
+            
+             <div class="row">
+                    <div class="col-sm-2">
+                      <ul id="method-list" class="nav nav-pills nav-stacked">
+                        <li class="active"><a href="#tab-general" data-toggle="tab">{{ tab_general }}</a></li>
+                        {% for i in 1..12 %}
+                        <li><a href="#tab-setting{{ i }}" data-toggle="tab">{{ tab_fee }} {{ i }}</a></li>
+                        {% endfor %}				   
+                      </ul>
+                    </div>
+	                
+                  <div class="col-sm-10">
+                    <div id="shipping-container" class="tab-content">
+                     <div class="tab-pane active" id="tab-general"> 
+                         <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input-status">{{ tab_general }}</label>
+                            <div class="col-sm-10">
+                              <select name="total_cardgatefee_status" id="input-status" class="form-control">
+                                {% if total_cardgatefee_status %}
+                                  <option value="1" selected="selected">{{ text_enabled }}</option>
+                                  <option value="0">{{ text_disabled }}</option>
+                                 {% else %}
+                                  <option value="1">{{ text_enabled }}</option>
+                                  <option value="0" selected="selected">{{ text_disabled }}</option>
+                                {% endif %}
+                              </select>
+                             </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-sm-2 control-label" for="input-sort-order">{{ entry_sort_order }}</label>
+                            <div class="col-sm-10">
+                              <input type="text" name="total_cardgatefee_sort_order" value="{{ total_cardgatefee_sort_order }}" placeholder="{{ entry_sort_order }}" id="input-sort-order" class="form-control" />
+                            </div>
+                          </div>  
+                            
+                       </div> <!--end of tab general-->
+                 
+	{% for data in method_data %}
+	   <div id="tab-setting{{ loop.index }}" class="tab-pane">
+         
+		<div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_name }}</label>
+            <div class="col-sm-10"><input class="form-control" type="text" name="total_cardgatefee_name{{ loop.index }}" value="{{ data.total_cardgatefee_name }}" /></div>
+            </div> 
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_cost_percentage }}</label>
+            <div class="col-sm-10"><input class="form-control" type="text" name="total_cardgatefee_cost_percentage{{ loop.index }}" value="{{ data.total_cardgatefee_cost_percentage }}" /> </div>
+          </div> 
+            <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_cost }}</label>
+            <div class="col-sm-10"><input class="form-control" type="text" name="total_cardgatefee_cost{{ loop.index }}" value="{{ data.total_cardgatefee_cost }}" /> </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_order_total }}</label>
+            <div class="col-sm-10"><input class="form-control" type="text" name="total_cardgatefee_total{{ loop.index }}" value="{{ data.total_cardgatefee_total }}" /> </div>
+          </div>
+           <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_order_max_total }}</label>
+            <div class="col-sm-10"><input class="form-control" type="text" name="total_cardgatefee_total_max{{ loop.index }}" value="{{ data.total_cardgatefee_total_max }}" /> </div>
+          </div>
+         <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_tax }}</label>
+            <div class="col-sm-10"><select class="form-control" name="total_cardgatefee_tax_class_id{{ loop.index }}">
+                <option value="0">{{ text_none }}</option>
+                 {% for tax_class in tax_classes %}
+                 	{% if tax_class.tax_class_id == data.total_cardgatefee_tax_class_id %} 
+                		<option value="{{ tax_class.tax_class_id }}" selected="selected">{{ tax_class.title }}</option>
+                	{% else %}
+                		<option value="{{ tax_class.tax_class_id }}">{{ tax_class.title }}</option>
+                	{% endif %}
+                {% endfor %}
+              </select></div>
+          </div>
+         <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_geo_zone }}</label>
+            <div class="col-sm-10"><select class="form-control" name="total_cardgatefee_geo_zone_id{{ loop.index }}">
+                <option value="0">{{ text_all }}</option>
+                {% for geo_zone in geo_zones %}
+                	{% if geo_zone.geo_zone_id == data.total_cardgatefee_geo_zone_id %}
+                		<option value="{{ geo_zone.geo_zone_id }}" selected="selected">{{ geo_zone.name }}</option>
+                	{% else %}
+                		<option value="{{ geo_zone.geo_zone_id }}">{{ geo_zone.name }}</option>
+                	{% endif %}
+                {% endfor %}
+              </select></div>
+          </div>     
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_shipping }}</label>
+            <div class="col-sm-10"><select class="form-control" name="total_cardgatefee_shipping{{ loop.index }}">
+                <option value="0">{{ text_all }}</option>
+                {% for shipping_mod in shipping_mods %}
+                	{% if shipping_mod.code == 'xshippingpro' %}
+                		<optgroup label="{{ shipping_mod.name }}">
+                	{% else %}
+                		{% if shipping_mod.code == data.total_cardgatefee_shipping %}
+                			<option value="{{ shipping_mod.code }}" selected="selected">{{ shipping_mod.name }}</option>
+                		{% else %}
+                			<option value="{{ shipping_mod.code }}">{{ shipping_mod.name }}</option>
+                		{% endif %}
+                		{% if shipping_mod.code =='xshippingpro' %}			    
+						  	{% for xshippingpro_method in xshippingpro_methods %}
+						  		{% if xshippingpro_method.code == data.total_cardgatefee_shipping %}
+					  				<option selected="selected" value="{{ xshippingpro_method.code }}">{{ xshippingpro_method.name }}</option>
+					  			{% else %}
+					  				<option value="{{ xshippingpro_method.code }}">{{ xshippingpro_method.name }}</option>
+					  			{% endif %}
+					  		{% endfor %}
+						{% endif %}
+				  </optgroup>
+                	{% endif %}
+                {% endfor %}
+                </select>
+            </div>
+          </div>
+           <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_payment }}</label>
+            <div class="col-sm-10">
+	            <select class="form-control" name="total_cardgatefee_payment{{ loop.index }}">
+	                <option value="0">{{ text_all }}</option>
+	                {% for payment_mod in payment_mods %}
+	                	{% if payment_mod.code=='cardgatepayment' %}
+					  		<optgroup label="{{ payment_mod.name }}">
+						{% else %}
+	                		{% if payment_mod.code == data.total_cardgatefee_payment %}
+	                			<option value="{{ payment_mod.code }}" selected="selected">{{ payment_mod.name }}</option>
+	                		{% else %}
+	                			<option value="{{ payment_mod.code }}">{{ payment_mod.name }}</option>
+	                		{% endif %}
+	                	{% endif %}
+	                {% endfor %}
+	                {% if payment_mod.code=='xpayment' %}
+	                	{% for xpayment in xpayments %}
+							  {% if xpayment.code == data.total_cardgatefee_payment %}
+							  	<option selected="selected" value="{{ xpayment.code }}">{{ xpayment.name }}</option>
+							  {% else %}
+							  	<option value="{{ xpayment.code }}">{{ xpayment.name }}</option>
+							  {% endif %}
+						{% endfor %}	  
+					  </optgroup>
+					{% endif %}
+	              </select>
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{ entry_sort_order }}</label>
+            <div class="col-sm-10"><input class="form-control" type="text" name="total_cardgatefee_sort_order{{ loop.index }}" value="{{ data.total_cardgatefee_sort_order }}" size="1" /></div>
+          </div>
+		  <div class="form-group">
+              <label class="col-sm-2 control-label">{{ entry_status }}</label>
+              <div class="col-sm-10">
+              	<select class="form-control" name="total_cardgatefee_status{{ loop.index }}">
+              		{% if data.total_cardgatefee_status == 1 %}
+                  		<option value="1" selected="selected">{{ text_enabled }}</option>
+                  		<option value="0">{{ text_disabled }}</option>
+                  	{% else %}
+                  		<option value="1">{{ text_enabled }}</option>
+                  		<option value="0" selected="selected">{{ text_disabled }}</option>
+                  	{% endif %}
+                </select>
+              </div>
+          </div>
+        </div>
+        
+		{% endfor %}
+                   </div>
+                 </div>
+               </div>      
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}

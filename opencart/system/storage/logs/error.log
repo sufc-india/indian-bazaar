@@ -1,0 +1,5 @@
+2020-07-03 1:28:37 - PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home3/cgruhamy/public_html/opencart/system/library/db/mysqli.php on line 7
+2020-07-03 1:28:37 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in /home3/cgruhamy/public_html/opencart/system/library/db/mysqli.php on line 10
+2020-07-03 1:28:37 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in /home3/cgruhamy/public_html/opencart/system/library/db/mysqli.php on line 10
+2020-07-03 1:28:37 - PHP Notice:  Undefined variable: mysql in /home3/cgruhamy/public_html/opencart/install/controller/install/step_3.php on line 280
+2020-07-03 1:28:37 - PHP Notice:  Trying to get property of non-object in /home3/cgruhamy/public_html/opencart/install/controller/install/step_3.php on line 280

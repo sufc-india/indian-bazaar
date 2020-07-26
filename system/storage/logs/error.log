@@ -1,0 +1,20 @@
+2020-07-02 17:01:08 - PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home3/cgruhamy/public_html/system/library/db/mysqli.php on line 7
+2020-07-02 17:01:08 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in /home3/cgruhamy/public_html/system/library/db/mysqli.php on line 10
+2020-07-02 17:01:08 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in /home3/cgruhamy/public_html/system/library/db/mysqli.php on line 10
+2020-07-02 17:01:08 - PHP Notice:  Undefined variable: mysql in /home3/cgruhamy/public_html/install/controller/install/step_3.php on line 280
+2020-07-02 17:01:08 - PHP Notice:  Trying to get property 'connect_error' of non-object in /home3/cgruhamy/public_html/install/controller/install/step_3.php on line 280
+2020-07-02 17:05:30 - PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home3/cgruhamy/public_html/system/library/db/mysqli.php on line 7
+2020-07-02 17:05:30 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in /home3/cgruhamy/public_html/system/library/db/mysqli.php on line 10
+2020-07-02 17:05:30 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in /home3/cgruhamy/public_html/system/library/db/mysqli.php on line 10
+2020-07-02 17:05:30 - PHP Notice:  Undefined variable: mysql in /home3/cgruhamy/public_html/install/controller/install/step_3.php on line 280
+2020-07-02 17:05:30 - PHP Notice:  Trying to get property 'connect_error' of non-object in /home3/cgruhamy/public_html/install/controller/install/step_3.php on line 280
+2020-07-02 17:59:34 - PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'cgruhamy_indianbazaar'@'localhost' (using password: YES) in /home3/cgruhamy/public_html/system/library/db/mysqli.php on line 7
+2020-07-02 17:59:34 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in /home3/cgruhamy/public_html/system/library/db/mysqli.php on line 10
+2020-07-02 17:59:34 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in /home3/cgruhamy/public_html/system/library/db/mysqli.php on line 10
+2020-07-02 17:59:34 - PHP Notice:  Undefined variable: mysql in /home3/cgruhamy/public_html/install/controller/install/step_3.php on line 280
+2020-07-02 17:59:34 - PHP Notice:  Trying to get property of non-object in /home3/cgruhamy/public_html/install/controller/install/step_3.php on line 280
+2020-07-02 18:00:15 - PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user 'cgruhamy_indianbazaar'@'localhost' (using password: YES) in /home3/cgruhamy/public_html/system/library/db/mysqli.php on line 7
+2020-07-02 18:00:15 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in /home3/cgruhamy/public_html/system/library/db/mysqli.php on line 10
+2020-07-02 18:00:15 - PHP Warning:  DB\MySQLi::__construct(): Couldn't fetch mysqli in /home3/cgruhamy/public_html/system/library/db/mysqli.php on line 10
+2020-07-02 18:00:15 - PHP Notice:  Undefined variable: mysql in /home3/cgruhamy/public_html/install/controller/install/step_3.php on line 280
+2020-07-02 18:00:15 - PHP Notice:  Trying to get property of non-object in /home3/cgruhamy/public_html/install/controller/install/step_3.php on line 280
